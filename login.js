@@ -3,8 +3,8 @@ module.exports = (username_, password_) => {
     const md5 = require('./md5');
     const base64 = require("./base64")();
     const http = require("http");
-    // const debuging = true;
-    const debuging = false;
+    const debuging = true;
+    // const debuging = false;
     const userAgent = "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:88.0) Gecko/20100101 Firefox/88.0";
     const host = '10.248.98.2';
     const url_ = `http://${host}`;
@@ -66,10 +66,12 @@ module.exports = (username_, password_) => {
                         'User-Agent': userAgent
                     }
                 }, res => {
-                    if (debuging) console.log('res', res);
+                    // if (debuging) console.log('res', res);
                     if (debuging) console.log(`状态码: ${res.statusCode}`);
                     res.on('data', data => {
-                        resolve(byteToString(data));
+                        const d = byteToString(data);
+                        if (debuging) console.log('got data', d)
+                        resolve(d);
                     });
                 });
                 req.end();
@@ -305,7 +307,7 @@ module.exports = (username_, password_) => {
                 double_stack: 0
             };
             login(url_, params, (data) => {
-                if (data.error === 'ok') resolve(true);
+                if (data.error === 'ok' || data.message.includes("AuthenticationSuccess,Welcome!")) resolve(true);
                 else {
                     console.error(data);
                     resolve(false);
