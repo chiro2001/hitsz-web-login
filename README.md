@@ -2,4 +2,4 @@
 
 哈工大深圳网络登录程序 - Nodejs版本
 
-`node main.js <username> <password>`
+`npm install && node main.js <username> <password>`
