@@ -1,6 +1,6 @@
 //jquery-base64 v1.0
 "use strict";
-module.exports = (function ($) {
+module.exports = (function () {
   var _PADCHAR = "=",
     _ALPHA = "LVoJPiCN2R8G90yg+hmFHuacZ1OWMnrsSTXkYpUq/3dlbfKwv6xztjI7DeBE45QA",
     _VERSION = "1.0";
