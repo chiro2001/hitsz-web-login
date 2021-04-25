@@ -1,0 +1,11 @@
+{
+  "scripts": {
+    "start": "node test.js"
+  },
+  "dependencies": {
+    "fetch": "^1.1.0",
+    "jquery": "^3.6.0",
+    "jsdom": "^16.5.3",
+    "node-fetch": "^2.6.1"
+  }
+}
