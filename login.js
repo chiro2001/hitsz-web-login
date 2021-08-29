@@ -1,10 +1,10 @@
-module.exports = (username_, password_) => {
+module.exports = (username_, password_, target_ip_) => {
     const sha1 = require('./sha1');
     const md5 = require('./md5');
     const base64 = require("./base64")();
     const http = require("http");
-    const debuging = true;
-    // const debuging = false;
+    // const debuging = true;
+    const debuging = false;
     const userAgent = "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:88.0) Gecko/20100101 Firefox/88.0";
     const host = '10.248.98.2';
     const url_ = `http://${host}`;
@@ -303,7 +303,8 @@ module.exports = (username_, password_) => {
                 domain: "",
                 password: password_,
                 ac_id: 1,
-                ip: resp.client_ip,
+                ip: target_ip_ || resp.client_ip,
+                // ip: "10.249.32.185",
                 double_stack: 0
             };
             login(url_, params, (data) => {
